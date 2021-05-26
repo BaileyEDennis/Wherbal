@@ -35,7 +35,7 @@ namespace Wherbal.Data
         public void Add(Herb herb)
         {
             using var db = new SqlConnection(ConnectionString);
-            var sql = @"INSERT INTO [Herbs]
+            var sql = @"INSERT INTO [dbo].[Herbs]
                                ([Name]
                                ,[Latin_Name]
                                ,[Description]
@@ -47,9 +47,9 @@ namespace Wherbal.Data
                                ,[Zone]
                                ,[See_More]
                                ,[Variants_Id])
+                         OUTPUT inserted.Id
                          VALUES (@Name, @Latin_Name, @Description, @Seed_Start, @Moisture, @Sun, @Soil_Ph, @Herb_Spacing, @Zone, @See_More, @Variants_Id)";
             var id = db.ExecuteScalar<int>(sql, herb);
-            herb.Id = id;
         }
 
         public void Update(Herb herb)
@@ -62,21 +62,21 @@ namespace Wherbal.Data
                             Seed_Start = @seed_Start,
                             Moisture = @moisture,
                             Sun = @sun,
-                            Soil_Ph = soil_Ph,
-                            Herb_Spacing = herb_Spacing,
-                            Zone = zone,
-                            See_More = see_more,
-                            Variants_Id = variants_Id,
+                            Soil_Ph = @soil_Ph,
+                            Herb_Spacing = @herb_Spacing,
+                            Zone = @zone,
+                            See_more = @see_more,
+                            Variants_Id = @variants_Id
                         WHERE Id = @id";
             db.Execute(sql, herb);
         }
 
-        public void DeleteHerb(int id)
+        public void Delete(int id)
         {
             using var db = new SqlConnection(ConnectionString);
             var sql = @"DELETE FROM Herbs
                         WHERE Id = @id";
-            db.Execute(sql, new { id = id });
+            db.Execute(sql, new { id });
         }
 
         public List<Herb> Search(string term)
