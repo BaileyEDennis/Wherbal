@@ -46,9 +46,10 @@ namespace Wherbal.Data
                                ,[Herb_Spacing]
                                ,[Zone]
                                ,[See_More]
-                               ,[Variants_Id])
+                               ,[Variants_Id]
+                               ,[Image_Url])
                          OUTPUT inserted.Id
-                         VALUES (@Name, @Latin_Name, @Description, @Seed_Start, @Moisture, @Sun, @Soil_Ph, @Herb_Spacing, @Zone, @See_More, @Variants_Id)";
+                         VALUES (@Name, @Latin_Name, @Description, @Seed_Start, @Moisture, @Sun, @Soil_Ph, @Herb_Spacing, @Zone, @See_More, @Variants_Id, @Image_Url)";
             var id = db.ExecuteScalar<int>(sql, herb);
         }
 
@@ -66,7 +67,8 @@ namespace Wherbal.Data
                             Herb_Spacing = @herb_Spacing,
                             Zone = @zone,
                             See_more = @see_more,
-                            Variants_Id = @variants_Id
+                            Variants_Id = @variants_Id,
+                            Image_Url = @image_Url
                         WHERE Id = @id";
             db.Execute(sql, herb);
         }
