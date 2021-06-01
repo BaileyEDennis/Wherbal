@@ -19,5 +19,6 @@ namespace Wherbal.Models
         public string Zone { get; set; }
         public string See_More { get; set; }
         public int Variants_Id { get; set; }
+        public string Image_Url { get; set; }
     }
 }

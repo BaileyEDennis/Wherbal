@@ -6,21 +6,22 @@ using System.Threading.Tasks;
 using Wherbal.Data;
 using Wherbal.Models;
 
+
 namespace Wherbal.Controllers
 {
     [ApiController]
-    [Route("api/Herbs")]
-    public class HerbsController : ControllerBase
+    [Route("api/Wish_Herbs")]
+    public class WishHerbController : ControllerBase
     {
-        HerbRepository _repo;
-            
-        public HerbsController(HerbRepository repo)
+        WishHerbRepository _repo;
+
+        public WishHerbController(WishHerbRepository repo)
         {
             _repo = repo;
         }
 
         [HttpGet]
-        public IActionResult GetAllHerbs()
+        public IActionResult GetAll()
         {
             return Ok(_repo.GetAll());
         }
@@ -40,14 +41,7 @@ namespace Wherbal.Controllers
         public IActionResult Add(Herb herb)
         {
             _repo.Add(herb);
-            return Created($"api/Herbs/{herb.Id}", herb);
-        }
-
-        [HttpPut("{id}")]
-        public IActionResult Update(Herb herb)
-        {
-            _repo.Update(herb);
-            return Ok();
+            return Created($"api/Wish_Herbs/{herb.Id}", herb);
         }
 
         [HttpDelete("{id}")]
