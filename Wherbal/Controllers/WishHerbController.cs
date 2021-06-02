@@ -20,23 +20,6 @@ namespace Wherbal.Controllers
             _repo = repo;
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            return Ok(_repo.GetAll());
-        }
-
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
-        {
-            var herb = _repo.Get(id);
-            if (herb == null)
-            {
-                return NotFound("This herb does not exist :(");
-            }
-            return Ok(herb);
-        }
-
         [HttpPost]
         public IActionResult Add(Herb herb)
         {

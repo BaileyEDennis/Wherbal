@@ -18,17 +18,17 @@ namespace Wherbal.Data
             ConnectionString = config.GetConnectionString("Wherbal");
         }
 
-        public List<Herb> GetAll()
+        public List<Herb> GetUserWishlist(int id)
         {
             using var db = new SqlConnection(ConnectionString);
-            var sql = @"Select * from Herbs H
-                            Join Wish_Herb WH
-                            ON H.Id = WH.Herb_Id
-                            Join Wishlist W
-                            ON WH.Wishlist_Id = W.Id
-                            Join Users U
-                            ON W.[User_Id] = U.Id";
-            return db.Query<Herb>(sql).ToList();
+            var sql = @"SELECT H.* FROM Wish_Herb WH
+		                         JOIN Herbs H
+		                         ON H.Id = WH.Herb_Id
+		                         JOIN Wishlist W
+		                         ON WH.Wishlist_Id = W.Id
+		                         WHERE W.[User_Id] = @id";
+            var herb = db.Query<Herb>(sql, new { id = id }).ToList();
+            return herb;
         }
     }
 }

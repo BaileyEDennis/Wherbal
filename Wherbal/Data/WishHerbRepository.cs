@@ -18,25 +18,6 @@ namespace Wherbal.Data
             ConnectionString = config.GetConnectionString("Wherbal");
         }
 
-        public List<Herb> GetAll()
-        {
-            using var db = new SqlConnection(ConnectionString);
-            var sql = @"Select * from Wish_Herb WH
-                            JOIN Herbs H
-                            ON H.Id = WH.Herb_Id";
-            return db.Query<Herb>(sql).ToList();
-        }
-
-        public Herb Get(int id)
-        {
-            using var db = new SqlConnection(ConnectionString);
-            var sql = @"SELECT * FROM Wish_Herb WH
-                                 JOIN Herbs H
-                                 ON H.Id = WH.Herb_Id
-                        WHERE WH.id = @id";
-            var herb = db.QueryFirstOrDefault<Herb>(sql, new { id = id });
-            return herb;
-        }
 
         public void Add(Herb herb)
         {
