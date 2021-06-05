@@ -20,9 +20,9 @@ namespace Wherbal.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllHerbs()
+        public IActionResult GetUserWishlist(int id)
         {
-            return Ok(_repo.GetAll());
+            return Ok(_repo.GetUserWishlist(id));
         }
     }
 }
