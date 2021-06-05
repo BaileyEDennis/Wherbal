@@ -8,6 +8,7 @@ import {
   NavItem,
 } from 'reactstrap';
 import SearchInput from '../SearchInput';
+import Auth from '../../Auth';
 
 const Example = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,6 +31,7 @@ const Example = (props) => {
           </Nav>
         <SearchInput />
         </Collapse>
+        <Auth />
       </Navbar>
     </div>
   );
