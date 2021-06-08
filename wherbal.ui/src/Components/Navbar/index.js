@@ -22,12 +22,12 @@ const Navigation = ({ user }) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <NavItem>
+            {user && <NavItem>
                 <Link className="nav-link" to='/my_plants'>My Plants</Link>
-            </NavItem>
-            <NavItem>
+            </NavItem> }
+            {user && <NavItem>
                 <Link className="nav-link" to='/wishlist'>Wishlist</Link>
-            </NavItem>
+            </NavItem> }
           </Nav>
         <SearchInput />
         </Collapse>

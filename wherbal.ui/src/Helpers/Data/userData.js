@@ -18,7 +18,6 @@ const loginClickEvent = (e) => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then((cred) => {
     const user = cred.additionalUserInfo.profile;
-    console.warn(user);
     if (cred.additionalUserInfo.isNewUser) {
       const userObj = {
         display_Name: user.name,
