@@ -1,0 +1,11 @@
+{
+    "BaseURL": "https://localhost:44316/api",
+    "firebaseConfig": {
+        "apiKey": "AIzaSyA05DDNfYfG1zqutcXK104NmJdc4MhzSt4",
+        "authDomain": "wherbal-98952.firebaseapp.com",
+        "projectId": "wherbal-98952",
+        "storageBucket": "wherbal-98952.appspot.com",
+        "messagingSenderId": "247388618826",
+        "appId": "1:247388618826:web:f37019ccc0c08b52f5e6b3"
+    }
+}

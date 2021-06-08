@@ -10,7 +10,7 @@ import {
 import SearchInput from '../SearchInput';
 import Auth from '../../Auth';
 
-const Example = (props) => {
+const Navigation = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -22,12 +22,12 @@ const Example = (props) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <NavItem>
+            {user && <NavItem>
                 <Link className="nav-link" to='/my_plants'>My Plants</Link>
-            </NavItem>
-            <NavItem>
+            </NavItem> }
+            {user && <NavItem>
                 <Link className="nav-link" to='/wishlist'>Wishlist</Link>
-            </NavItem>
+            </NavItem> }
           </Nav>
         <SearchInput />
         </Collapse>
@@ -37,4 +37,4 @@ const Example = (props) => {
   );
 };
 
-export default Example;
+export default Navigation;

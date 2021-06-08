@@ -12,7 +12,6 @@ export default class Home extends Component {
   render() {
     return (
       <div className="homepage">
-        <h1>Welcome to Wherbal</h1>
         <div className="d-flex justify-content-center m2 home_prompts">
           <div>
             <Card className="rounded-0">
