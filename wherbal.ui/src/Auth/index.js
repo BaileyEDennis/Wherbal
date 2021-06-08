@@ -1,15 +1,61 @@
 import React, { Component } from 'react';
+import firebase from 'firebase/app';
+import {
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from 'reactstrap';
+import AuthData from '../Helpers/Data/userData';
 
-class Auth extends Component {
+export default class Auth extends Component {
+  state = {
+    user: null,
+    authed: null,
+  };
+
+  componentDidMount() {
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      } else {
+        this.setState({ user: false });
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this.removeListener();
+  }
+
   render() {
+    const { user } = this.state;
+
     return (
-        <div className="d-flex justify-content-center">
-            <button className="signin-button google-logo">
-            <i className="fas fa-sign-out-alt"></i> Sign In
-            </button>
+      <>
+      { !user ? <button className='nav-link btn btnLogin' onClick={(e) => AuthData.loginClickEvent(e)}>Login</button>
+        : <>
+      <div className='row'>
+        <div className='user-icon-container'>
+          <p>Hi {user?.displayName}</p>
         </div>
+          <UncontrolledDropdown>
+            <DropdownToggle nav caret></DropdownToggle>
+            <DropdownMenu right>
+              <DropdownItem>
+                <div
+                  className='nav-link btn btnSecondary'
+                  onClick={(e) => AuthData.logoutClickEvent(e)}
+                >
+                  Logout
+                </div>
+              </DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown>
+        </div>
+      </>
+      }
+      </>
     );
   }
 }
-
-export default Auth;
