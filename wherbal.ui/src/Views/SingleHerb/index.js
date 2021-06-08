@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Card, CardText, CardBody,
-  CardTitle, CardSubtitle,
+  CardTitle, CardSubtitle, Button,
 } from 'reactstrap';
 import herbData from '../../Helpers/Data/herbData';
 
@@ -48,6 +48,8 @@ export default class SingleHerb extends React.Component {
             <CardText>Zones: {herb.zone}</CardText>
             <hr></hr>
             <CardText>Visit <a href={herb.see_More}>Here</a> for further information</CardText>
+            <Button>Add To Wishlist</Button>
+            <Button>Add To My Herbs</Button>
             </div>
           </CardBody>
         </Card>
