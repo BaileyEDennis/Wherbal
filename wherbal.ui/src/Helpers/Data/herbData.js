@@ -10,4 +10,10 @@ const getAllHerbs = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getAllHerbs };
+const getSingleHerb = (herbId) => new Promise((resolve, reject) => {
+  axios.get(`${herbUrl}/${herbId}`).then((response) => {
+    resolve(response.data);
+  }).catch((error) => reject(error));
+});
+
+export default { getAllHerbs, getSingleHerb };

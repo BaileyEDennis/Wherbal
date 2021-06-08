@@ -1,0 +1,17 @@
+@import 'variables';
+
+.single-view{
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    .card {
+        border: 1px solid $Greensheen;
+        background-color: $Champagne;
+        width: 85%;
+        
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

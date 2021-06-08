@@ -24,7 +24,7 @@ class AllHerbs extends React.Component {
 
     return (
         <>
-        <div id='cards-container' className='d-flex flex-wrap justify-content-center'>
+        <div id='allherbs-cards-container' className='d-flex justify-content-around flex-wrap'>
             {renderHerbs()}
         </div>
         </>
