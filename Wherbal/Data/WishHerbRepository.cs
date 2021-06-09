@@ -19,15 +19,16 @@ namespace Wherbal.Data
         }
 
 
-        public void Add(Herb herb)
+        public void Add(int herbId, int wishlist_Id)
         {
             using var db = new SqlConnection(ConnectionString);
-            var sql = @"INSERT INTO [dbo].[Wish_Herb]
+                var sql = @"INSERT INTO [dbo].[Wish_Herb]
                                ([Herb_Id]
-                               ,[Wishlist_Id)
+                               ,[Wishlist_Id])
                          OUTPUT inserted.Id
                          VALUES (@Herb_Id, @Wishlist_Id)";
-            var id = db.ExecuteScalar<int>(sql, herb);
+                var id = db.ExecuteScalar<int>(sql, new { Herb_Id = herbId, Wishlist_Id = wishlist_Id });
+                
         }
 
         public void Delete(int id)

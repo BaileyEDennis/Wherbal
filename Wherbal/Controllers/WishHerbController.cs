@@ -14,17 +14,29 @@ namespace Wherbal.Controllers
     public class WishHerbController : ControllerBase
     {
         WishHerbRepository _repo;
+        WishlistRepository _wishRepo;
 
-        public WishHerbController(WishHerbRepository repo)
+        public WishHerbController(WishHerbRepository repo, WishlistRepository wishRepo)
         {
             _repo = repo;
+            _wishRepo = wishRepo;
         }
 
         [HttpPost]
-        public IActionResult Add(Herb herb)
+        [Route("{herbId}/{userId}")]
+        public IActionResult Add(int herbId, int userId)
         {
-            _repo.Add(herb);
-            return Created($"api/Wish_Herbs/{herb.Id}", herb);
+            var wishlist = _wishRepo.GetSingleUserWishlist(userId);
+            if (wishlist != null)
+            {
+                _repo.Add(herbId, wishlist.Id);
+            }
+            else
+            {
+                var wishListId = _wishRepo.CreateWishlist(userId);
+                _repo.Add(herbId, wishListId);
+            }
+            return Ok();
         }
 
         [HttpDelete("{id}")]

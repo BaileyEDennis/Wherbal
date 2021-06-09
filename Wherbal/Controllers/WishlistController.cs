@@ -24,5 +24,11 @@ namespace Wherbal.Controllers
         {
             return Ok(_repo.GetUserWishlist(id));
         }
+
+        [HttpPost]
+        public IActionResult CreateWishlist(int userId)
+        {
+            return Ok(_repo.CreateWishlist(userId));
+        }
     }
 }

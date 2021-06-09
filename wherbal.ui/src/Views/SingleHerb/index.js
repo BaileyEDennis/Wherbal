@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Card, CardText, CardBody,
-  CardTitle, CardSubtitle,
+  CardTitle, CardSubtitle, Button,
 } from 'reactstrap';
 import herbData from '../../Helpers/Data/herbData';
 
@@ -12,12 +12,17 @@ export default class SingleHerb extends React.Component {
 
   componentDidMount() {
     const HerbId = this.props.match.params.id;
-    console.warn(HerbId);
     herbData.getSingleHerb(HerbId).then((response) => {
       this.setState({
         herb: response,
       });
     });
+  }
+
+  addToMyWishlist = () => {
+    const { herb } = this.state;
+    herbData.addHerbToWishlist(herb.id, herb);
+    console.warn('added', herb);
   }
 
   render() {
@@ -48,6 +53,8 @@ export default class SingleHerb extends React.Component {
             <CardText>Zones: {herb.zone}</CardText>
             <hr></hr>
             <CardText>Visit <a href={herb.see_More}>Here</a> for further information</CardText>
+            <Button onClick={this.addToMyWishlist}>Add To Wishlist</Button>
+            <Button>Add To My Herbs</Button>
             </div>
           </CardBody>
         </Card>
