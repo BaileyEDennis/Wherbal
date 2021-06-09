@@ -16,4 +16,10 @@ const getSingleHerb = (herbId) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
-export default { getAllHerbs, getSingleHerb };
+const addHerbToWishlist = (herbId, herb) => new Promise((resolve, reject) => {
+  axios.post(`${herbUrl}/Wish_Herbs/${herbId}`, herb).then((response) => {
+    resolve(response.data);
+  }).catch((error) => reject(error));
+});
+
+export default { getAllHerbs, getSingleHerb, addHerbToWishlist };

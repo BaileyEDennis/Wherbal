@@ -30,5 +30,25 @@ namespace Wherbal.Data
             var herb = db.Query<Herb>(sql, new { id = id }).ToList();
             return herb;
         }
+
+        public Wishlist GetSingleUserWishlist(int userId)
+        {
+            using var db = new SqlConnection(ConnectionString);
+            var sql = @"SELECT * from Wishlist
+                        WHERE Wishlist.[User_Id] = @userId";
+            var wishlist = db.QueryFirstOrDefault<Wishlist>(sql, new { userId = userId });
+            return wishlist;
+        }
+
+        public int CreateWishlist(int userId)
+        {
+            using var db = new SqlConnection(ConnectionString);
+            var sql = @"INSERT INTO [dbo].[Wishlist]
+                            ([user_Id])
+                        OUTPUT inserted.Id
+                        VALUES (@user_Id)";
+            var wishlistId = db.ExecuteScalar<int>(sql, new { user_Id = userId });
+            return wishlistId;
+        }
     }
 }

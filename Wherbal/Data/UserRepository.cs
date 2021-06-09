@@ -52,15 +52,11 @@ namespace Wherbal.Data
             using var db = new SqlConnection(ConnectionString);
 
             var sql = @"INSERT INTO [Users]
-	                        ([First_Name],
-	                        [Last_Name],
-	                        [Display_Name],
+	                        ([Display_Name],
 	                        [Image_Url],
                             [Firebase_Uid])
                         VALUES 
-	                        (@First_Name, 
-	                        @Last_Name, 
-	                        @Display_Name,
+	                        (@Display_Name,
 	                        @Image_Url,
                             @Firebase_Uid)";
             var id = db.ExecuteScalar<int>(sql, user);
@@ -71,9 +67,7 @@ namespace Wherbal.Data
         {
             using var db = new SqlConnection(ConnectionString);
             var sql = @"UPDATE [Users]
-                        SET First_Name = @First_Name,
-                            Last_Name = @Last_Name,
-                            Display_Name = @Display_Name,
+                        SET Display_Name = @Display_Name,
                             Image_Url = @Image_Url,
                             Firebase_Uid = @Firebase_Uid
                         WHERE Id = @id";
