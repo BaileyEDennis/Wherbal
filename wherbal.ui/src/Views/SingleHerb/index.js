@@ -8,6 +8,7 @@ import herbData from '../../Helpers/Data/herbData';
 export default class SingleHerb extends React.Component {
   state = {
     herb: [],
+    user: this.props.user,
   };
 
   componentDidMount() {
@@ -19,10 +20,8 @@ export default class SingleHerb extends React.Component {
     });
   }
 
-  addToMyWishlist = () => {
-    const { herb } = this.state;
-    herbData.addHerbToWishlist(herb.id, herb);
-    console.warn('added', herb);
+  addToWishList = () => {
+    herbData.addHerbToWishList(this.state.herb.id, this.props.user.id);
   }
 
   render() {
@@ -53,7 +52,7 @@ export default class SingleHerb extends React.Component {
             <CardText>Zones: {herb.zone}</CardText>
             <hr></hr>
             <CardText>Visit <a href={herb.see_More}>Here</a> for further information</CardText>
-            <Button onClick={this.addToMyWishlist}>Add To Wishlist</Button>
+            <Button onClick={this.addToWishList}>Add To Wishlist</Button>
             <Button>Add To My Herbs</Button>
             </div>
           </CardBody>

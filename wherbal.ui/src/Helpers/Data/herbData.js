@@ -1,25 +1,37 @@
 import axios from 'axios';
 import { BaseURL } from '../config.json';
 
-const herbUrl = `${BaseURL}/herbs`;
+const herbUrl = `${BaseURL}`;
 
 const getAllHerbs = () => new Promise((resolve, reject) => {
-  axios.get(herbUrl).then((response) => {
+  axios.get(`${herbUrl}/herbs`).then((response) => {
     resolve(response.data);
   })
     .catch((error) => reject(error));
 });
 
 const getSingleHerb = (herbId) => new Promise((resolve, reject) => {
-  axios.get(`${herbUrl}/${herbId}`).then((response) => {
+  axios.get(`${herbUrl}/herbs/${herbId}`).then((response) => {
     resolve(response.data);
   }).catch((error) => reject(error));
 });
 
-const addHerbToWishlist = (herbId, herb) => new Promise((resolve, reject) => {
-  axios.post(`${herbUrl}/Wish_Herbs/${herbId}`, herb).then((response) => {
+const addHerbToWishList = (herbId, userId) => new Promise((resolve, reject) => {
+  axios.post(`${herbUrl}/Wish_Herbs/${herbId}/${userId}`).then((response) => {
     resolve(response.data);
   }).catch((error) => reject(error));
 });
 
-export default { getAllHerbs, getSingleHerb, addHerbToWishlist };
+const getAllWishlistHerbs = (id) => new Promise((resolve, reject) => {
+  axios.get(`${herbUrl}/Wishlist/${id}`).then((response) => {
+    resolve(response.data);
+  })
+    .catch((error) => reject(error));
+});
+
+export default {
+  getAllHerbs,
+  getSingleHerb,
+  addHerbToWishList,
+  getAllWishlistHerbs,
+};

@@ -14,7 +14,6 @@ class AllHerbs extends React.Component {
         this.setState({
           herbs: response,
         });
-        console.warn(response);
       });
   }
 

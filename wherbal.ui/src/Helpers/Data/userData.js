@@ -18,7 +18,9 @@ const loginClickEvent = (e) => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then((cred) => {
     const user = cred.additionalUserInfo.profile;
+    console.warn(user);
     if (cred.additionalUserInfo.isNewUser) {
+      console.warn(user);
       const userObj = {
         display_Name: user.name,
         Image_Url: user.picture,
@@ -26,6 +28,7 @@ const loginClickEvent = (e) => {
       };
       axios.post(`${userDataUrl}`, userObj);
     }
+    window.location.href = '/';
   });
 };
 
@@ -36,4 +39,15 @@ const logoutClickEvent = (e) => {
   window.location.href = '/';
 };
 
-export default { getUid, loginClickEvent, logoutClickEvent };
+const getUserByFirebaseUid = (firebaseUid) => new Promise((resolve, reject) => {
+  axios.get(`${userDataUrl}/firebase/${firebaseUid}`).then((response) => {
+    resolve(response.data);
+  }).catch((error) => reject(error));
+});
+
+export default {
+  getUid,
+  loginClickEvent,
+  logoutClickEvent,
+  getUserByFirebaseUid,
+};
