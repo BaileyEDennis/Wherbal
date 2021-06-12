@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from '../Helpers/routes';
 import Nav from '../Components/Navbar';
 import fbConnection from '../Helpers/fbConnection';
+import UserData from '../Helpers/Data/userData';
 
 fbConnection();
 
@@ -19,8 +20,12 @@ class App extends React.Component {
         user
           .getIdToken()
           .then((token) => sessionStorage.setItem('token', token));
-        this.setState({ user });
-        this.setState({ authed: true });
+        UserData.getUserByFirebaseUid(user.uid).then((response) => {
+          this.setState({
+            user: response,
+            authed: true,
+          });
+        });
       } else {
         this.setState({ user: false });
       }
