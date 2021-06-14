@@ -7,6 +7,7 @@ import MyPlants from '../Views/My_Plants';
 import Wishlist from '../Views/Wishlist';
 import AllHerbs from '../Views/AllHerbs';
 import SingleHerb from '../Views/SingleHerb';
+import SearchResults from '../Views/SearchResults.js';
 
 export default function Routes({ user }) {
   return (
@@ -16,6 +17,7 @@ export default function Routes({ user }) {
         <Route exact path="/wishlist" component={(props) => <Wishlist {...props} user={user}/>} />
         <Route exact path="/all_herbs" component={() => <AllHerbs/>} />
         <Route exact path='/details/:id' component={(props) => <SingleHerb {...props} user={user}/>} />
+        <Route exact path='/search/:term' component={(props) => <SearchResults {...props}/>} />
         <Route component={NotFound} />
       </Switch>
   );

@@ -46,6 +46,12 @@ const DeleteSavedHerb = (id) => axios.delete(`${herbUrl}/Saved_Herbs/${id}`);
 
 const DeleteWishHerb = (id) => axios.delete(`${herbUrl}/Wish_Herbs/${id}`);
 
+const Search = (term) => new Promise((resolve, reject) => {
+  axios.get(`${herbUrl}/Herbs/search/${term}`).then((response) => {
+    resolve(response.data);
+  }).catch((error) => reject(error));
+});
+
 export default {
   getAllHerbs,
   getSingleHerb,
@@ -55,4 +61,5 @@ export default {
   getAllSavedlistHerbs,
   DeleteSavedHerb,
   DeleteWishHerb,
+  Search,
 };

@@ -36,6 +36,13 @@ namespace Wherbal.Controllers
             return Ok(herb);
         }
 
+        [HttpGet("search/{term}")]
+        public IActionResult Search(string term)
+        {
+            var results = _repo.Search(term);
+            return Ok(results);
+        }
+
         [HttpPost]
         public IActionResult Add(Herb herb)
         {
