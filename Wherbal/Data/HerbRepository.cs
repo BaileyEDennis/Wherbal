@@ -84,12 +84,10 @@ namespace Wherbal.Data
         public List<Herb> Search(string term)
         {
             var sql = @"SELECT *
-                        FROM Herbs
+                        FROM HERBS
                         WHERE Name like '%' + @searchTerm + '%'
 	                          OR
-	                          Description like '%' + @searchTerm + '%'
-                              OR
-                              Latin_Name like '%' + @searchTerm + '%'";
+	                          Description like '%' + @searchTerm + '%'";
 
             using var db = new SqlConnection(ConnectionString);
 
