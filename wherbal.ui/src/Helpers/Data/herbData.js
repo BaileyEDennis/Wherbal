@@ -22,8 +22,21 @@ const addHerbToWishList = (herbId, userId) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
+const addHerbToSavedList = (herbId, userId) => new Promise((resolve, reject) => {
+  axios.post(`${herbUrl}/Saved_Herbs/${herbId}/${userId}`).then((response) => {
+    resolve(response.data);
+  }).catch((error) => reject(error));
+});
+
 const getAllWishlistHerbs = (id) => new Promise((resolve, reject) => {
   axios.get(`${herbUrl}/Wishlist/${id}`).then((response) => {
+    resolve(response.data);
+  })
+    .catch((error) => reject(error));
+});
+
+const getAllSavedlistHerbs = (id) => new Promise((resolve, reject) => {
+  axios.get(`${herbUrl}/Savedlist/${id}`).then((response) => {
     resolve(response.data);
   })
     .catch((error) => reject(error));
@@ -34,4 +47,6 @@ export default {
   getSingleHerb,
   addHerbToWishList,
   getAllWishlistHerbs,
+  addHerbToSavedList,
+  getAllSavedlistHerbs,
 };

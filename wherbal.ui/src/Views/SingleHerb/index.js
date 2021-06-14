@@ -24,6 +24,10 @@ export default class SingleHerb extends React.Component {
     herbData.addHerbToWishList(this.state.herb.id, this.props.user.id);
   }
 
+  addToSavedlist = () => {
+    herbData.addHerbToSavedList(this.state.herb.id, this.props.user.id);
+  }
+
   render() {
     const { herb } = this.state;
     return (
@@ -53,7 +57,7 @@ export default class SingleHerb extends React.Component {
             <hr></hr>
             <CardText>Visit <a href={herb.see_More}>Here</a> for further information</CardText>
             <Button onClick={this.addToWishList}>Add To Wishlist</Button>
-            <Button>Add To My Herbs</Button>
+            <Button onClick={this.addToSavedlist}>Add To My Herbs</Button>
             </div>
           </CardBody>
         </Card>
