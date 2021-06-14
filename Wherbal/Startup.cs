@@ -34,6 +34,8 @@ namespace Wherbal
             services.AddTransient<UserRepository>();
             services.AddTransient<WishHerbRepository>();
             services.AddTransient<WishlistRepository>();
+            services.AddTransient<SavedHerbRepository>();
+            services.AddTransient<SavedlistRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
