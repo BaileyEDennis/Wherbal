@@ -44,7 +44,7 @@ class WishList extends React.Component {
     }
     return (
           <>
-          <h1>I'm thinking of getting a...</h1>
+          <h1 className='d-flex justify-content-center'>I'm thinking of getting a...</h1>
           <div id='allherbs-cards-container' className='d-flex justify-content-around flex-wrap'>
               {renderHerbs()}
           </div>

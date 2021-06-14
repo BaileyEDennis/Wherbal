@@ -12,10 +12,10 @@ export default class quizLinear extends Component {
     return (
       <div className="quiz-page">
         <div className="text area">
-            <h1>Diggin' in!</h1>
-            <h3>Do the leaves look like little blades of grass joining individually into a main stem?</h3>
+            <h1 className='d-flex justify-content-center'>Diggin' in!</h1>
+            <h3 className='d-flex justify-content-center'>Do the leaves look like little blades of grass joining individually into a main stem?</h3>
         </div>
-        <div id='allherbs-cards-container' className="d-flex justify-content-center flex-wrap m2">
+        <div id='allherbs-cards-container' className='d-flex justify-content-around flex-wrap'>
           <div>
             <Card className="rounded-0">
             <Link to={'/quiz_trl'}>

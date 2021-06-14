@@ -12,10 +12,10 @@ export default class quizCompound extends Component {
     return (
       <div className="quiz-page">
         <div className="text area">
-            <h1>Next question...</h1>
-            <h3>Do the leaves clump in 3's?</h3>
+            <h1 className='d-flex justify-content-center'>Next question...</h1>
+            <h3 className='d-flex justify-content-center'>Do the leaves clump in 3's?</h3>
         </div>
-        <div id='allherbs-cards-container' className="d-flex justify-content-center flex-wrap m2">
+        <div id='allherbs-cards-container' className='d-flex justify-content-around flex-wrap'>
           <div>
             <Card className="rounded-0">
             <Link to={'/quiz_pvsc'}>

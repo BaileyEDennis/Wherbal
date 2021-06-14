@@ -36,7 +36,7 @@ class myPlants extends React.Component {
     }
     return (
       <>
-        <h1>Plants I have</h1>
+        <h1 className='d-flex justify-content-center'>Plants I have</h1>
         <div
           id="allherbs-cards-container"
           className="d-flex justify-content-around flex-wrap"

@@ -42,8 +42,8 @@ export default class SearchResults extends Component {
         >
         {Results.length ? (
           <div className='product-results-container mt-5'>
-            <h1>Were you looking for this?</h1>
-            <div className='d-flex flex-wrap justify-content-center'>
+            <h1 className='d-flex justify-content-center'>Were you looking for this?</h1>
+            <div id='allherbs-cards-container' className='d-flex justify-content-around flex-wrap'>
               {showResults()}
             </div>
           </div>

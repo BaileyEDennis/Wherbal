@@ -12,10 +12,10 @@ export default class quizSimple extends Component {
     return (
       <div className="quiz-page">
         <div className="text area">
-            <h1>Next question...</h1>
-            <h3>Is the leaf Serrated or Smooth?</h3>
+            <h1 className='d-flex justify-content-center'>Next question...</h1>
+            <h3 className='d-flex justify-content-center'>Is the leaf Serrated or Smooth?</h3>
         </div>
-        <div id='allherbs-cards-container' className="d-flex justify-content-space-between flex-wrap m2">
+        <div id='allherbs-cards-container' className='d-flex justify-content-around flex-wrap'>
           <div>
             <Card className="rounded-0">
             <Link to={'/details/4'}>
