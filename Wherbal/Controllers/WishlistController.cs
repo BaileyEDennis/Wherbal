@@ -19,7 +19,7 @@ namespace Wherbal.Controllers
             _repo = repo;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult GetUserWishlist(int id)
         {
             return Ok(_repo.GetUserWishlist(id));
