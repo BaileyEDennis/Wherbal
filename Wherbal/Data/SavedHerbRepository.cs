@@ -35,7 +35,7 @@ namespace Wherbal.Data
         {
             using var db = new SqlConnection(ConnectionString);
             var sql = @"DELETE FROM Saved_Herb
-                        WHERE Id = @id";
+                        WHERE Herb_Id = @id";
             db.Execute(sql, new { id });
         }
     }

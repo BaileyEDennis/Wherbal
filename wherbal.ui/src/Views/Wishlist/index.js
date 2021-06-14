@@ -1,6 +1,6 @@
 import React from 'react';
 import HerbData from '../../Helpers/Data/herbData';
-import HerbCard from '../../Components/Cards/HerbCard';
+import WishCard from '../../Components/Cards/WishCard';
 
 class WishList extends React.Component {
   state = {
@@ -19,13 +19,24 @@ class WishList extends React.Component {
     }
   }
 
+  removeHerb = (key) => {
+    HerbData.DeleteWishHerb(key);
+    this.getUserHerbs();
+  };
+
+  moveHerb = (key) => {
+    HerbData.addHerbToSavedList(key, this.props.user.id);
+    HerbData.DeleteWishHerb(key);
+    this.getUserHerbs();
+  }
+
   componentDidMount() {
     this.getUserHerbs();
   }
 
   render() {
     const { herbs, user } = this.state;
-    const renderHerbs = () => herbs.map((herb) => (<HerbCard key={herb.id} herb={herb}/>));
+    const renderHerbs = () => herbs.map((herb) => (<WishCard removeHerb={this.removeHerb} moveHerb={this.moveHerb} key={herb.id} herb={herb}/>));
     if (user === null) {
       return (
         <h1>Loading...</h1>
