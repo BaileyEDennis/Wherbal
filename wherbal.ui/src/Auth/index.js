@@ -6,7 +6,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
-import AuthData from '../Helpers/Data/userData';
+import UserData from '../Helpers/Data/userData';
 
 export default class Auth extends Component {
   state = {
@@ -33,7 +33,7 @@ export default class Auth extends Component {
 
     return (
       <>
-      { !user ? <button className='nav-link btn btnLogin' onClick={(e) => AuthData.loginClickEvent(e)}>Login</button>
+      { !user ? <button className='nav-link btn btnLogin' onClick={(e) => UserData.loginClickEvent(e)}>Login</button>
         : <>
       <div className='row'>
         <div className='user-icon-container'>
@@ -45,7 +45,7 @@ export default class Auth extends Component {
               <DropdownItem>
                 <div
                   className='nav-link btn btnSecondary'
-                  onClick={(e) => AuthData.logoutClickEvent(e)}
+                  onClick={(e) => UserData.logoutClickEvent(e)}
                 >
                   Logout
                 </div>
