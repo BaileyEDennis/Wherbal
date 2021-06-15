@@ -17,18 +17,17 @@ const loginClickEvent = (e) => {
 
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then((cred) => {
-    const user = cred.additionalUserInfo.profile;
-    console.warn(user);
     if (cred.additionalUserInfo.isNewUser) {
-      console.warn(user);
+      debugger;
       const userObj = {
-        display_Name: user.name,
-        Image_Url: user.picture,
+        display_Name: cred.user.displayName,
+        Image_Url: cred.user.photoURL,
         firebase_Uid: cred.user.uid,
       };
-      axios.post(`${userDataUrl}`, userObj);
+      axios.post(`${userDataUrl}`, userObj).then(() => { window.location.href = '/'; });
+    } else {
+      window.location.href = '/';
     }
-    window.location.href = '/';
   });
 };
 

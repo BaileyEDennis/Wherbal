@@ -55,11 +55,12 @@ namespace Wherbal.Data
 	                        ([Display_Name],
 	                        [Image_Url],
                             [Firebase_Uid])
+                        OUTPUT inserted.Id
                         VALUES 
 	                        (@Display_Name,
 	                        @Image_Url,
                             @Firebase_Uid)";
-            var id = db.ExecuteScalar<int>(sql, user);
+var id = db.ExecuteScalar<int>(sql, user);
             user.Id = id;
         }
 

@@ -12,10 +12,10 @@ export default class quizPvsC extends Component {
     return (
       <div className="quiz-page">
         <div className="text area">
-            <h1>Getting Close!</h1>
-            <h3>Are the leaves more rounded, or are they pointed?</h3>
+            <h1 className='d-flex justify-content-center'>Getting Close!</h1>
+            <h3 className='d-flex justify-content-center'>Are the leaves more rounded, or are they pointed?</h3>
         </div>
-        <div id='allherbs-cards-container' className="d-flex justify-content-center flex-wrap m2">
+        <div id='allherbs-cards-container' className='d-flex justify-content-around flex-wrap'>
           <div>
             <Card className="rounded-0">
             <Link to={'/details/8'}>
